@@ -1,0 +1,80 @@
+.topbar {
+
+      color:white;
+      text-align: justify;
+      background-color: #789;
+      height: 5%;
+}
+
+
+.upperbuttons button:hover {
+      background-color:grey;
+      cursor: pointer;
+}
+
+.upperbuttons {
+      position: absolute;
+      right: 10px;
+}
+
+.buttongroup {
+
+      float:right;
+      font-size:1rem;
+
+}
+
+
+.topicsTable {
+      margin: 0 auto;
+      text-align: left;
+      border-collapse: collapse;
+}
+
+
+.topicsTable tr:hover {
+      background-color:lightgrey ;
+}
+
+
+.topicsTable th {
+      font-size: 1rem;
+      font-family: monospace;
+      border: 1px solid black;
+      padding: 8px 16px;
+      /*border-collapse: collapse;*/
+}
+
+.topicsTable td {
+      font-size: 0.75em;
+
+      border: 1px solid black;
+
+      cursor: pointer;
+}
+
+.header1, .header2, .header3, .header4, .header5 {
+      font-size: 0.8em;
+}
+
+
+
+.LoginPage, .RegistrationPage, .PostPage {
+
+width:250px;
+float:left;
+padding:25px;
+margin:20px 0 0 10px;
+border:1px #DFD0D2 dashed;
+position:relative;
+
+
+}
+
+.imagegroup {
+  width:250px;
+  margin: 0 auto;
+  padding:25px;
+  position:relative;
+
+}
