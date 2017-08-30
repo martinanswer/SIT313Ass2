@@ -75,9 +75,9 @@ function showLoginPage() {
 
 
     var usernameLine = $("<p>Username:</p>");
-    var usernameBox = $("<input type= 'text'></input>");
+    var usernameBox = $("<input type= 'text' id = 'username1'></input>");
     var passwordLine = $("<p>Password:</p>");
-    var passwordBox = $("<input type= 'text'></input>");
+    var passwordBox = $("<input type= 'text' id = 'Password1'></input>");
 
 
     page.append(usernameLine);
@@ -91,6 +91,20 @@ var loginBtn = $("<button>Login</button>");
 page.append(loginBtn);
 
 loginBtn.on("click", function(){
+
+  try{
+    var email = document.getElementById("username1").value;
+    if(document.getElementById("username1").value == "") throw "the username can not be empty";
+    if(document.getElementById("Password1").value == "") throw "the password can not be empty";
+
+
+  }
+  catch(err){
+    var a = 10;
+    alert(err);
+  }
+
+  if (a != 10)
   showForumTopics();
 
 });
@@ -113,13 +127,13 @@ function showRegistrationPage() {
 
 
         var usernameLine = $("<p>Username:</p>");
-        var usernameBox = $("<input type= 'text'></input>");
+        var usernameBox = $("<input type= 'text' id = 'username2'></input>");
         var passwordLine = $("<p>Password:</p>");
-        var passwordBox = $("<input type= 'text'></input>");
+        var passwordBox = $("<input type= 'text' id = 'password2'></input>");
         var emailLine = $("<p>Email:</p>");
-        var emailBox = $("<input type= 'text'></input>");
+        var emailBox = $("<input type= 'text' id = 'email'></input>");
         var phoneLine = $("<p>Phone:</p>");
-        var phoneBox = $("<input type= 'text'></input>");
+        var phoneBox = $("<input type= 'text' id = 'phone'></input>");
 
 
         page.append(usernameLine);
@@ -131,10 +145,36 @@ function showRegistrationPage() {
         page.append(phoneLine);
         phoneLine.append(phoneBox);
 
-        var loginBtn = $("<button>Register</button>");
-        page.append(loginBtn);
+        var RegisterBtn = $("<button>Register</button>");
+        page.append(RegisterBtn);
 
-        loginBtn.on("click", function(){
+        RegisterBtn.on("click", function(){
+
+
+
+          function validateEmail(email) {
+          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+        }
+
+
+
+
+          try{
+            var email = document.getElementById("email").value;
+            if(document.getElementById("username2").value == "") throw "the username can not be empty";
+            if(document.getElementById("phone").value == "") throw "the phone can not be empty";
+            if(document.getElementById("password2").value == "") throw "the Password can not be empty";
+            if (validateEmail(email)){}
+            else throw "the email adress was not valid";
+
+          }
+          catch(err){
+          var  x = 1
+            alert(err);
+          }
+
+         if (x != 1)
           showLoginPage();
 
         });
