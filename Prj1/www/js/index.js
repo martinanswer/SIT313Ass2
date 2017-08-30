@@ -199,9 +199,9 @@ function addTopic() {
   page.append("<h1 class ='header4'>&nbsp;Add a Topic</h1><hr><br>");
 
   var topictitleLine = $("<p>Title:</p>");
-  var topictitleBox = $("<input type= 'text'></input>");
+  var topictitleBox = $("<input type= 'text' id = 'tittle'></input>");
   var topicpostLine = $("<p>Post:</p>");
-  var topicpostBox = $("<form id= 'acForm' ><textarea></textarea></form>");
+  var topicpostBox = $("<form id= 'acForm' ><textarea id = 'textarea'></textarea></form>");
 
 
   page.append(topictitleLine);
@@ -215,8 +215,20 @@ function addTopic() {
   page.append(postBtn);
 
   postBtn.on("click", function(){
+    try{
+      if (document.getElementById("tittle").value == "") throw "the tittle can not be empty"
+      if (document.getElementById("textarea").value == "") throw "the content can not be empty"
+    }
+
+    catch(err){
+      var p = 5
+      alert(err);
+    }
+
+    if(p != 5){
     alert("We" + " " + "appreciate" + " " + "of" + " " + "your" + " " + "feedbacks");
     showForumTopics();
+  }
 
 
 
