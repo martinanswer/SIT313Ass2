@@ -266,10 +266,20 @@ function showForumTopics() {
 }
 
 function showSingleTopic(topicDetails){
+
     alert("Welcome" + " " + "to" + " " + topicDetails.title + " " + "Topics");
+
     var page = $("<div></div>");
+
     page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
-    var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='plus.png' width='20px' height='20px'/></button>");
+
+//============================================================================================
+//can not be used!!!!!!!!!!!!!!!! url:http://demos.jquerymobile.com/1.4.5/filterable/
+//============================================================================================
+    page.append("<form class='ui-filterable'><input id='filterBasic-input' data-type='search'></form><ul data-role='listview' data-input='#filterBasic-input' data-filter='true'><li>Acura</li><li>Audi</li><li>BMW</li><li>Cadillac</li><li>Ferrari</li></ul>");
+
+    var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
+
     page.append(postBtn2);
 
     postBtn2.on("click",function(){
