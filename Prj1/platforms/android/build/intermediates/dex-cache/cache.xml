@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/tkwok/Prj1/platforms/android/build/intermediates/exploded-aar/org.apache.cordova/CordovaLib/6.2.3/debug/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="7a1530ac850543228ac856fe951d258efe29f918">
+        <dex dex="/Users/tkwok/Prj1/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-6.2.3-debug_7a0ae0c6e996645b2a40f1f735927422eee4e5ce.jar" />
+    </item>
+
+</items>
