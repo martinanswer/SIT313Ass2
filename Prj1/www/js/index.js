@@ -276,11 +276,18 @@ function showSingleTopic(topicDetails){
 //============================================================================================
 //can not be used!!!!!!!!!!!!!!!! url:http://demos.jquerymobile.com/1.4.5/filterable/
 //============================================================================================
-    page.append("<form class='ui-filterable'><input id='filterBasic-input' data-type='search'></form><ul data-role='listview' data-input='#filterBasic-input' data-filter='true'><li>Acura</li><li>Audi</li><li>BMW</li><li>Cadillac</li><li>Ferrari</li></ul>");
+//page.append("<form class='ui-filterable'><input id='filterBasic-input' data-type='search'></form><ul data-role='listview' data-input='#filterBasic-input' data-filter='true'><li>Acura</li><li>Audi</li><li>BMW</li><li>Cadillac</li><li>Ferrari</li></ul>");
+
+    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Cutest kitty</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet'>reply</ons-button></div></ons-list-item>")
+
+    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Cutest kitty</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet'>reply</ons-button></div></ons-list-item>")
+
+    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Cutest kitty</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet'>reply</ons-button></div></ons-list-item>")
 
     var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
     page.append(postBtn2);
+
 
     postBtn2.on("click",function(){
       addTopic();

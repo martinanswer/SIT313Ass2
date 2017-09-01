@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/Users/tkwok/Prj1/platforms/android/build/intermediates/res/merged/debug/drawable-port-mdpi/screen.png",
-        "source": "/Users/tkwok/Prj1/platforms/android/res/drawable-port-mdpi/screen.png"
+        "merged": "E:\\Users\\tkwok\\Prj1\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-port-mdpi\\screen.png",
+        "source": "E:\\Users\\tkwok\\Prj1\\platforms\\android\\res\\drawable-port-mdpi\\screen.png"
+    },
+    {
+        "merged": "E:\\sit313ass2\\10\\SIT313Ass2-martin\\Prj1\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-port-mdpi\\screen.png",
+        "source": "E:\\sit313ass2\\10\\SIT313Ass2-martin\\Prj1\\platforms\\android\\res\\drawable-port-mdpi\\screen.png"
     }
 ]
