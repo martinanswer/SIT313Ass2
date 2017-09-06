@@ -52,16 +52,46 @@ app.initialize();
 // Variables
 //---------------------------------------------------------------
 
+var posta = 14
+
 var topics = [
-  {title: "Melbourne Restaurant", posts: 14, author: "Chloe877", date: "12/03/2017"},
-    {title: "Coffee Mate", posts: 10, author: "Alex_03", date: "05/03/2017"},
-    {title: "Travel", posts: 5, author: "GT1610", date: "19/02/2017"}
+  {title: "Melbourne Restaurant", posts: posta, author: "Chloe877", date: "12/03/2017"},
+    {title: "Travel", posts: 10, author: "Alex_03", date: "05/03/2017"},
+    {title: "Career advise", posts: 5, author: "Matin_GOD", date: "19/02/2017"}
 ];
 
 
 //---------------------------------------------------------------
 // Function
 //---------------------------------------------------------------
+
+function showForumTopics() {
+    var page = $("<div></div>");
+    page.append("<h1 class ='header1'>&nbsp;Melbourne help center</h1><hr><br>");
+
+    var topicTable = $("<table class = 'topicsTable' ><tr><th>Title</th><th>Posts</th><th>Author</th><th>Date</th></tr></table>");
+
+        // Loop through all topics in the global variable "topics"
+        for (index in topics) {
+        	/*console.log(topics[index].title);*/
+        	var row = $("<tr></tr>");
+            row.append("<td>" + topics[index].title + " </td>");
+            row.append("<td>" + topics[index].posts + " </td>");
+            row.append("<td>" + topics[index].author + " </td>");
+            row.append("<td>" + topics[index].date + " </td>");
+
+          createTopicOnClick(row, topics[index]);
+
+          topicTable.append(row);
+
+      }
+
+      page.append(topicTable);
+
+      // Finally, add the page to our web app
+    $("#maincontent").html(page);
+
+}
 
 function showLoginPage() {
 
@@ -189,6 +219,8 @@ function createTopicOnClick(node, topic){
   });
 }
 
+
+
 /**
     This function shows the lists of all forum topics.
     In Project 1, we are using static data.
@@ -215,6 +247,8 @@ function addTopic() {
   page.append(postBtn);
 
   postBtn.on("click", function(){
+    posta = posta+1;
+    topics[0].posts = posta;
     try{
       if (document.getElementById("tittle").value == "") throw "the tittle can not be empty"
       if (document.getElementById("textarea").value == "") throw "the content can not be empty"
@@ -238,35 +272,86 @@ function addTopic() {
 }
 
 
-function showForumTopics() {
-    var page = $("<div></div>");
-    page.append("<h1 class ='header1'>&nbsp;ForumSystem Topics</h1><hr><br>");
-
-    var topicTable = $("<table class = 'topicsTable' ><tr><th>Title</th><th>Posts</th><th>Author</th><th>Date</th></tr></table>");
-
-        // Loop through all topics in the global variable "topics"
-        for (index in topics) {
-        	/*console.log(topics[index].title);*/
-        	var row = $("<tr></tr>");
-            row.append("<td>" + topics[index].title + " </td>");
-            row.append("<td>" + topics[index].posts + " </td>");
-            row.append("<td>" + topics[index].author + " </td>");
-            row.append("<td>" + topics[index].date + " </td>");
-
-          createTopicOnClick(row, topics[index]);
-          topicTable.append(row);
-
-      }
-
-      page.append(topicTable);
-
-      // Finally, add the page to our web app
-    $("#maincontent").html(page);
-
-}
-
 function showSingleTopic(topicDetails){
 
+  if(topicDetails.title == "Melbourne Restaurant"){
+      alert("Welcome" + " " + "to" + " " + topicDetails.title + " " + "Topics");
+
+      var page = $("<div></div>");
+
+      page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
+
+  //============================================================================================
+  //can not be used!!!!!!!!!!!!!!!! url:http://demos.jquerymobile.com/1.4.5/filterable/
+  //============================================================================================
+  //page.append("<form class='ui-filterable'><input id='filterBasic-input' data-type='search'></form><ul data-role='listview' data-input='#filterBasic-input' data-filter='true'><li>Acura</li><li>Audi</li><li>BMW</li><li>Cadillac</li><li>Ferrari</li></ul>");
+
+      page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Subway</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn1'>reply</ons-button></div></ons-list-item>")
+
+      page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>China bar</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn2'>reply</ons-button></div></ons-list-item>")
+
+      page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>coffee bar</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
+
+      var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
+
+      page.append(postBtn2);
+
+
+
+
+      postBtn2.on("click",function(){
+        addTopic();
+      });
+
+      $("#maincontent").html(page);
+
+      document.getElementById("replybtn1").onclick=function(){addTopic();};
+      document.getElementById("replybtn2").onclick=function(){addTopic();};
+      document.getElementById("replybtn3").onclick=function(){addTopic();};
+
+  };
+
+
+  if(topicDetails.title == "Career advise"){
+      alert("Welcome" + " " + "to" + " " + topicDetails.title + " " + "Topics");
+
+      var page = $("<div></div>");
+
+      page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
+
+  //============================================================================================
+  //can not be used!!!!!!!!!!!!!!!! url:http://demos.jquerymobile.com/1.4.5/filterable/
+  //============================================================================================
+  //page.append("<form class='ui-filterable'><input id='filterBasic-input' data-type='search'></form><ul data-role='listview' data-input='#filterBasic-input' data-filter='true'><li>Acura</li><li>Audi</li><li>BMW</li><li>Cadillac</li><li>Ferrari</li></ul>");
+
+      page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Student course</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn1'>reply</ons-button></div></ons-list-item>")
+
+      page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Car rent</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn2'>reply</ons-button></div></ons-list-item>")
+
+      page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>House rent</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
+
+      var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
+
+      page.append(postBtn2);
+
+
+
+
+      postBtn2.on("click",function(){
+        addTopic();
+      });
+
+      $("#maincontent").html(page);
+
+      document.getElementById("replybtn1").onclick=function(){addTopic();};
+      document.getElementById("replybtn2").onclick=function(){addTopic();};
+      document.getElementById("replybtn3").onclick=function(){addTopic();};
+
+  };
+
+
+
+if(topicDetails.title == "Travel"){
     alert("Welcome" + " " + "to" + " " + topicDetails.title + " " + "Topics");
 
     var page = $("<div></div>");
@@ -278,15 +363,17 @@ function showSingleTopic(topicDetails){
 //============================================================================================
 //page.append("<form class='ui-filterable'><input id='filterBasic-input' data-type='search'></form><ul data-role='listview' data-input='#filterBasic-input' data-filter='true'><li>Acura</li><li>Audi</li><li>BMW</li><li>Cadillac</li><li>Ferrari</li></ul>");
 
-    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Cutest kitty</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet'>reply</ons-button></div></ons-list-item>")
+    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Bus</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn1'>reply</ons-button></div></ons-list-item>")
 
-    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Cutest kitty</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet'>reply</ons-button></div></ons-list-item>")
+    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Taxi</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn2'>reply</ons-button></div></ons-list-item>")
 
-    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Cutest kitty</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet'>reply</ons-button></div></ons-list-item>")
+    page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Tram</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
 
     var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
     page.append(postBtn2);
+
+
 
 
     postBtn2.on("click",function(){
@@ -295,7 +382,13 @@ function showSingleTopic(topicDetails){
 
     $("#maincontent").html(page);
 
+    document.getElementById("replybtn1").onclick=function(){addTopic();};
+    document.getElementById("replybtn2").onclick=function(){addTopic();};
+    document.getElementById("replybtn3").onclick=function(){addTopic();};
+
+};
 }
+
 
 
 
