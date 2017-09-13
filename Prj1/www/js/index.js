@@ -54,6 +54,10 @@ app.initialize();
 
 var posta = 14
 
+window.baseUrl = " http://introtoapps.com/datastore.php?=list&appid=216328682"
+
+window.forumtopics = []
+
 var topics = [
   {title: "Melbourne Restaurant", posts: posta, author: "Chloe877", date: "12/03/2017"},
     {title: "Travel", posts: 10, author: "Alex_03", date: "05/03/2017"},
@@ -145,6 +149,72 @@ loginBtn.on("click", function(){
 
 }
 
+//===============================================================
+//data base function============================================
+//=================================================================
+
+
+function createUser(_username,_password){
+  var userObject = {
+    username:_username,
+    password:_password,
+  };
+
+  var data = JSON.stringify(userObject);
+
+  alert(data);
+
+  var url = baseUrl + "&action=save&objectid=" + encodeURIComponent(_username) + ".user&data="
+  + encodeURIComponent(data);
+
+  alert(url);
+
+  $.ajax({
+    url:url,
+    cache:false
+  })
+  .done(function( data ){
+    alert(data);
+  })
+  .fail(function( jqXHR, textStatus ) {
+alert( "Request failed: " + textStatus );
+});
+
+}
+
+//=============================================================
+// create forum topic database function
+//==============================================================
+
+
+function createForum(_title,_post){
+  var forumObject = {
+    title:_title,
+    post:_post,
+  };
+
+  var data = JSON.stringify(forumObject);
+
+  alert(data);
+
+  var url = baseUrl + "&action=append&objectid=forumtopics&data=" + encodeURIComponent(data);
+
+  alert(url);
+
+  $.ajax({
+    url:url,
+    cache:false
+  })
+  .done(function( data ){
+    alert(data);
+  })
+  .fail(function( jqXHR, textStatus ) {
+alert( "Request failed: " + textStatus );
+});
+
+}
+
+
 function showRegistrationPage() {
 
   // Create the page
@@ -164,6 +234,10 @@ function showRegistrationPage() {
         var emailBox = $("<input type= 'text' id = 'email'></input>");
         var phoneLine = $("<p>Phone:</p>");
         var phoneBox = $("<input type= 'text' id = 'phone'></input>");
+
+
+
+
 
 
         page.append(usernameLine);
@@ -204,9 +278,13 @@ function showRegistrationPage() {
             alert(err);
           }
 
-         if (x != 1)
+         if (x != 1){
+             var username3 = document.getElementById("username2").value;
+             var password3 = document.getElementById("password2").value;
           showLoginPage();
 
+          createUser(username3,password3);
+}
         });
 
     $("#maincontent").html(page);
@@ -261,6 +339,9 @@ function addTopic() {
 
     if(p != 5){
     alert("We" + " " + "appreciate" + " " + "of" + " " + "your" + " " + "feedbacks");
+    var title1 = document.getElementById("tittle").value;
+    var post1 = document.getElementById("textarea").value;
+    createForum(title1,post1);
     showForumTopics();
   }
 
@@ -291,6 +372,7 @@ function showSingleTopic(topicDetails){
       page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>China bar</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn2'>reply</ons-button></div></ons-list-item>")
 
       page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>coffee bar</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
+
 
       var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
