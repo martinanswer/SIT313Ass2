@@ -1,0 +1,110 @@
+<html>
+<head>
+  <script src="jquery-3.2.1.min.js"></script>
+
+  <!-- <script src="js/bbb.js"></script> -->
+  <script>
+
+  window.baseUrl = " http://introtoapps.com/datastore.php?=list&appid=216328682"
+  // window.currentUsename = null
+  window.bbb = [];
+
+
+  function displayForumPage(){
+    for (var index = 0; index < bbb.length; index++){
+      var topic = bbb[index];
+      $("body").append("<p>" + topic.title + "/" + topic.author + "</p>")
+    }
+    var newTopic = {
+      title:"whatever"
+      // author:window.currentUsename;
+    }
+
+
+    bbb.push(newTopic);
+  }
+
+  function loadForumTopic(){
+    var url = baseUrl + "&action=load&objectid=bbb";
+
+    $.ajax({
+      url:url,
+      cache:false
+    })
+    .done(function( data ){
+      try{
+        alert("aaa" + data);
+      window.bbb = JSON.parse(data);
+      displayForumPage();} catch(e){
+        alert(e);}
+      $("body").append( data );
+    })
+    .fail(function( jqXHR, textStatus ) {
+  alert( "Request failed: " + textStatus );
+});
+
+  }
+
+  function createUser(_username,_password,_age){
+    var userObject = {
+      username:_username,
+      password:_password,
+      age:_age,
+    };
+
+    var data = JSON.stringify(userObject);
+
+    alert(data);
+
+    var url = baseUrl + "&action=save&objectid=" + encodeURIComponent(_username) + ".user&data="
+    + encodeURIComponent(data);
+
+    alert(url);
+
+    $.ajax({
+      url:url,
+      cache:false
+    })
+    .done(function( data ){
+      alert(data);
+    })
+    .fail(function( jqXHR, textStatus ) {
+  alert( "Request failed: " + textStatus );
+});
+
+  }
+
+  function loadUser(username){
+    var url = baseUrl + "&action=load&objectid=" + encodeURIComponent(username) + ".user";
+
+    console.log(url);
+
+    $.ajax({
+      url:url,
+      cache:false
+    })
+    .done(function( data ){
+      $("body").append( data );
+    })
+    .fail(function( jqXHR, textStatus ) {
+  alert( "Request failed: " + textStatus );
+});
+
+  }
+
+  $(document).ready(function(){
+    console.log("my app starting (v1.2)......")
+
+     loadForumTopic();
+  });
+
+
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
