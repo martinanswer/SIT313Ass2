@@ -112,7 +112,7 @@ function showLoginPage() {
     var usernameLine = $("<p>Username:</p>");
     var usernameBox = $("<input type= 'text' id = 'username1'></input>");
     var passwordLine = $("<p>Password:</p>");
-    var passwordBox = $("<input type= 'text' id = 'Password1'></input>");
+    var passwordBox = $("<input type= 'password' id = 'Password1'></input>");
 
 
 
@@ -152,7 +152,7 @@ loginBtn.on("click", function(){
       //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
       var userid = document.getElementById("username1").value;
       var userpassword1 = document.getElementById("Password1").value;
-      var userpassword = sha256('userpassword1');
+      var userpassword = sha256(userpassword1);
       alert(userpassword);
 
       var url = baseUrl + "&action=load&objectid=" + encodeURIComponent(userid) + ".user";
@@ -271,7 +271,7 @@ function showRegistrationPage() {
         var usernameLine = $("<p>Username:</p>");
         var usernameBox = $("<input type= 'text' id = 'username2'></input>");
         var passwordLine = $("<p>Password:</p>");
-        var passwordBox = $("<input type= 'text' id = 'password2'></input>");
+        var passwordBox = $("<input type= 'password' id = 'password2'></input>");
         var emailLine = $("<p>Email:</p>");
         var emailBox = $("<input type= 'text' id = 'email'></input>");
         var phoneLine = $("<p>Phone:</p>");
@@ -323,7 +323,7 @@ function showRegistrationPage() {
          if (x != 1){
              var username3 = document.getElementById("username2").value;
              var password3 = document.getElementById("password2").value;
-             var password4 = sha256('password3');
+             var password4 = sha256(password3);
           showLoginPage();
 
           createUser(username3,password4);
