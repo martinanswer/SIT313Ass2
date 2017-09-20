@@ -56,12 +56,13 @@ var posta = 14
 
 window.baseUrl = " http://introtoapps.com/datastore.php?=list&appid=216328682"
 
-window.forumtopics = []
+window.forumtopics = [];
+window.userarray = [];
 
 var topics = [
   {title: "Melbourne Restaurant", posts: posta, author: "Chloe877", date: "12/03/2017"},
     {title: "Travel", posts: 10, author: "Alex_03", date: "05/03/2017"},
-    {title: "Career advise", posts: 5, author: "Matin_GOD", date: "19/02/2017"}
+    {title: "Career advise", posts: 5, author: "Martin_GOD", date: "19/02/2017"}
 ];
 
 
@@ -126,6 +127,7 @@ page.append(loginBtn);
 
 loginBtn.on("click", function(){
 
+
   try{
     var email = document.getElementById("username1").value;
     if(document.getElementById("username1").value == "") throw "the username can not be empty";
@@ -138,9 +140,37 @@ loginBtn.on("click", function(){
     alert(err);
   }
 
-  if (a != 10)
-  showForumTopics();
+  if (a != 10){
+      //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+      var userid = document.getElementById("username1").value;
+      var userpassword = document.getElementById("Password1").value;
+      var url = baseUrl + "&action=load&objectid=" + encodeURIComponent(userid) + ".user";
+      $.ajax({
+          url:url,
+          cache:false
+      })
+      .done(function( data ){
 
+      alert("aaa" + data);
+      window.userarray = JSON.parse(data);
+      alert(userarray.password);
+      if(userarray.password != userpassword) {alert("the password was wrong!")}
+      if(userarray.password == userpassword) {alert("Welcome!")
+        showForumTopics()}
+
+
+
+    })
+  //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  // var username0 = document.getElementById("username1").value;
+  //
+  // var loadreturnvalue = new XMLHttpRequest();
+  //
+  // loadreturnvalue.open("get", encodeURI("http://introtoapps.com/datastore.php?action=load&appid=216328682&objectid=" + username0), false);
+  //
+  // loadreturnvalue.send(null);
+  //￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥
+}
 });
 
 
@@ -372,7 +402,30 @@ function showSingleTopic(topicDetails){
       page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>China bar</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn2'>reply</ons-button></div></ons-list-item>")
 
       page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>coffee bar</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S
+        var url = baseUrl + "&action=load&objectid=forumtopics";
 
+        $.ajax({
+            url:url,
+            cache:false
+                })
+
+                .done(function( data ){
+                    try{
+                        alert("aaa" + data);
+                        window.forumtopics = JSON.parse(data);
+                        for (var index = 0; index < forumtopics.length; index++){
+                            var topic = forumtopics[index];
+                            alert( topic.title )
+                    }
+                }
+                    catch(e){
+                        alert(e);}
+                    })
+
+                    .fail(function( jqXHR, textStatus ) {
+                        alert( "Request failed: " + textStatus );
+                    });
 
       var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
