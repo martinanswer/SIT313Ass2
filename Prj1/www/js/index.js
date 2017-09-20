@@ -115,6 +115,7 @@ function showLoginPage() {
     var passwordBox = $("<input type= 'text' id = 'Password1'></input>");
 
 
+
     page.append(usernameLine);
     usernameLine.append(usernameBox);
     page.append(passwordLine);
@@ -150,17 +151,18 @@ loginBtn.on("click", function(){
   if (a != 10){
       //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
       var userid = document.getElementById("username1").value;
-      var userpassword = document.getElementById("Password1").value;
+      var userpassword1 = document.getElementById("Password1").value;
+      var userpassword = sha256('userpassword1');
+      alert(userpassword);
+
       var url = baseUrl + "&action=load&objectid=" + encodeURIComponent(userid) + ".user";
       $.ajax({
           url:url,
           cache:false
       })
       .done(function( data ){
-
-      alert("aaa" + data);
+          alert(data);
       window.userarray = JSON.parse(data);
-      alert(userarray.password);
       if(userarray.password != userpassword) {alert("the password was wrong!")}
       if(userarray.password == userpassword) {alert("Welcome!")
         showForumTopics()}
@@ -321,9 +323,10 @@ function showRegistrationPage() {
          if (x != 1){
              var username3 = document.getElementById("username2").value;
              var password3 = document.getElementById("password2").value;
+             var password4 = sha256('password3');
           showLoginPage();
 
-          createUser(username3,password3);
+          createUser(username3,password4);
 }
         });
 
