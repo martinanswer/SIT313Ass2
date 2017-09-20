@@ -444,9 +444,6 @@ function showSingleTopic(topicDetails){
                         alert( "Request failed: " + textStatus );
                     });
 
-      var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
-
-      page.append(postBtn2);
 
 
 
@@ -470,6 +467,10 @@ function showSingleTopic(topicDetails){
       var page = $("<div></div>");
 
       page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
+
+      var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
+
+      page.append(postBtn2);
 
   //============================================================================================
   //can not be used!!!!!!!!!!!!!!!! url:http://demos.jquerymobile.com/1.4.5/filterable/
@@ -520,9 +521,7 @@ function showSingleTopic(topicDetails){
                           .fail(function( jqXHR, textStatus ) {
                               alert( "Request failed: " + textStatus );
                           });
-      var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
-      page.append(postBtn2);
 
 
 
@@ -545,6 +544,10 @@ if(topicDetails.title == "Travel"){
     alert("Welcome" + " " + "to" + " " + topicDetails.title + " " + "Topics");
 
     var page = $("<div></div>");
+
+    var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
+
+    page.append(postBtn2);
 
     page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
 
@@ -597,10 +600,7 @@ if(topicDetails.title == "Travel"){
                         .fail(function( jqXHR, textStatus ) {
                             alert( "Request failed: " + textStatus );
                         });
-                        
-    var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
-    page.append(postBtn2);
 
 
 
