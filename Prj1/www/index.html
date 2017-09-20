@@ -35,22 +35,37 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <!--UniCode-->
+        <meta charset="utf-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Forum Task</title>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+
+<!-- =========================================================================================
+onsenui css!
+==============================================================================================-->
 
         <link rel="stylesheet" href="css/onsenui.css">
         <link rel="stylesheet" href="css/onsen-css-components.min.css">
-        <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+
+
+        <title>Forum Task</title>
+
+<!-- =========================================================================================
+        onsenui css!
+==============================================================================================-->
+
+
         <script src="js/onsenui.min.js"></script>
 
+
+        <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/sha256.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
         <script src="js/index.js"></script>
 
 
@@ -58,18 +73,18 @@
 <body>
 <br>
 <div  class="topbar">
-    <img src ="icon.png" width:"30px" height="25px"/>
+    <img src ="img/icon.png" width:"30px" height="25px"/>
     ForumSystem
     <span class= "upperbuttons">
-    <button id="homeBtn">Home</button>
-    <button id="loginBtn">Login</button>
-    <button id="registerBtn">Register</button>
+    <button id="homeBtn" data-role="none">Home</button>
+    <button id="loginBtn" data-role="none">Login</button>
+    <button id="registerBtn" data-role="none">Register</button>
     </span>
 
 </div>
 <div class="buttongroup">
   <!-- <button id="postBtn">New Post<img src ="plus.png" width="20px" height="20px"/></button> -->
-  <a href="https://www.facebook.com"><button><img src="fb.png" width="20px" height="20px"></button></a>
+  <a href="https://www.facebook.com"><button><img src="img/fb.png" width="20px" height="20px"></button></a>
 </div>
 
 <!--
@@ -83,12 +98,12 @@
     <div id= "maincontent"></div>
 
     <div class="imagegroup">
-    <img src ="run.png" width="80px" height="45px"/>
-    <img src ="rest.png" width="80px" height="45px"/>
-    <img src ="tral.png" width="80px" height="45px"/>
+    <img src ="img/run.png" width="80px" height="45px"/>
+    <img src ="img/rest.png" width="80px" height="45px"/>
+    <img src ="img/tral.png" width="80px" height="45px"/>
 
 
-    <img src ="coffee.jpeg" width="240px" height="240px"/>
+    <img src ="img/coffee.jpeg" width="240px" height="240px"/>
 </div>
     </body>
 </html>
