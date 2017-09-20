@@ -1,4 +1,4 @@
-#Tue Aug 01 21:01:31 AEST 2017
-base.0=/Users/tkwok/Prj1/platforms/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Thu Aug 31 23:03:15 AEST 2017
+base.0=E\:\\sit313ass2\\10\\SIT313Ass2-martin\\Prj1\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.0=/Users/tkwok/Prj1/platforms/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.0=E\:\\sit313ass2\\10\\SIT313Ass2-martin\\Prj1\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

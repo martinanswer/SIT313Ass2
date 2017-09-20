@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/Users/tkwok/Prj1/platforms/android/build/intermediates/res/merged/debug/xml/config.xml",
-        "source": "/Users/tkwok/Prj1/platforms/android/res/xml/config.xml"
+        "merged": "E:\\Users\\tkwok\\Prj1\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\config.xml",
+        "source": "E:\\Users\\tkwok\\Prj1\\platforms\\android\\res\\xml\\config.xml"
+    },
+    {
+        "merged": "E:\\sit313ass2\\10\\SIT313Ass2-martin\\Prj1\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\config.xml",
+        "source": "E:\\sit313ass2\\10\\SIT313Ass2-martin\\Prj1\\platforms\\android\\res\\xml\\config.xml"
     }
 ]
