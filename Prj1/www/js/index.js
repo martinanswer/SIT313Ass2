@@ -125,6 +125,13 @@ function showLoginPage() {
 var loginBtn = $("<button>Login</button>");
 page.append(loginBtn);
 
+var rememberBtn = $("<button>Remember the username</button>");
+page.append(rememberBtn);
+rememberBtn.on("click", function(){
+     localStorage.username = document.getElementById("username1").value;
+})
+
+
 loginBtn.on("click", function(){
 
 
@@ -176,6 +183,9 @@ loginBtn.on("click", function(){
 
 
     $("#maincontent").html(page);
+    if (localStorage.getItem("username") != null){
+    document.getElementById("username1").value = localStorage.username;
+    }
 
 }
 
