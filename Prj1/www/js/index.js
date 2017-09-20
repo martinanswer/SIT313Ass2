@@ -391,6 +391,9 @@ function showSingleTopic(topicDetails){
       var page = $("<div></div>");
 
       page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
+      var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
+
+      page.append(postBtn2);
 
   //============================================================================================
   //can not be used!!!!!!!!!!!!!!!! url:http://demos.jquerymobile.com/1.4.5/filterable/
@@ -403,6 +406,8 @@ function showSingleTopic(topicDetails){
 
       page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>coffee bar</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S
+//use the data base to load the data
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         var url = baseUrl + "&action=load&objectid=forumtopics";
 
         $.ajax({
@@ -414,10 +419,22 @@ function showSingleTopic(topicDetails){
                     try{
                         alert("aaa" + data);
                         window.forumtopics = JSON.parse(data);
-                        for (var index = 0; index < forumtopics.length; index++){
-                            var topic = forumtopics[index];
-                            alert( topic.title )
+                        alert("www" + window.forumtopics);
+                        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                        //use data persistence to remember the index
+                        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                        if(localStorage.index == null)
+                            localStorage.index = 0;
+                        var a=0;
+                        for (var index = localStorage.index; index < forumtopics.length; index++){
+                            var topic = forumtopics[index].title;
+                            alert(topic);
+                            a++;
+                            page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
+
                     }
+
+                    localStorage.index = index-a;
                 }
                     catch(e){
                         alert(e);}
@@ -465,6 +482,44 @@ function showSingleTopic(topicDetails){
 
       page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>House rent</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
 
+      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S
+      //use the data base to load the data
+      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+              var url = baseUrl + "&action=load&objectid=forumtopics";
+
+              $.ajax({
+                  url:url,
+                  cache:false
+                      })
+
+                      .done(function( data ){
+                          try{
+                              alert("aaa" + data);
+                              window.forumtopics = JSON.parse(data);
+                              alert("www" + window.forumtopics);
+                              //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                              //use data persistence to remember the index
+                              //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                              if(localStorage.index == null)
+                                  localStorage.index = 0;
+                              var a=0;
+                              for (var index = localStorage.index; index < forumtopics.length; index++){
+                                  var topic = forumtopics[index].title;
+                                  alert(topic);
+                                  a++;
+                                  page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
+
+                          }
+
+                          localStorage.index = index-a;
+                      }
+                          catch(e){
+                              alert(e);}
+                          })
+
+                          .fail(function( jqXHR, textStatus ) {
+                              alert( "Request failed: " + textStatus );
+                          });
       var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
       page.append(postBtn2);
@@ -504,6 +559,45 @@ if(topicDetails.title == "Travel"){
 
     page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>Tram</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
 
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S
+    //use the data base to load the data
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+            var url = baseUrl + "&action=load&objectid=forumtopics";
+
+            $.ajax({
+                url:url,
+                cache:false
+                    })
+
+                    .done(function( data ){
+                        try{
+                            alert("aaa" + data);
+                            window.forumtopics = JSON.parse(data);
+                            alert("www" + window.forumtopics);
+                            //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                            //use data persistence to remember the index
+                            //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                            if(localStorage.index == null)
+                                localStorage.index = 0;
+                            var a=0;
+                            for (var index = localStorage.index; index < forumtopics.length; index++){
+                                var topic = forumtopics[index].title;
+                                alert(topic);
+                                a++;
+                                page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
+
+                        }
+
+                        localStorage.index = index-a;
+                    }
+                        catch(e){
+                            alert(e);}
+                        })
+
+                        .fail(function( jqXHR, textStatus ) {
+                            alert( "Request failed: " + textStatus );
+                        });
+                        
     var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
     page.append(postBtn2);
