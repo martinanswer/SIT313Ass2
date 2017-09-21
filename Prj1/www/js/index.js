@@ -74,6 +74,8 @@ function showForumTopics() {
     var page = $("<div></div>");
     page.append("<h1 class ='header1'>&nbsp;Melbourne help center</h1><hr><br>");
 
+    page.append("<text>" + "&nbsp;Welcome to ForumSystem!-&nbsp;" + userarray.username + "</text>");
+
     var topicTable = $("<table class = 'topicsTable' ><tr><th>Title</th><th>Posts</th><th>Author</th><th>Date</th></tr></table>");
 
         // Loop through all topics in the global variable "topics"
@@ -93,9 +95,28 @@ function showForumTopics() {
 
       page.append(topicTable);
 
+
       // Finally, add the page to our web app
     $("#maincontent").html(page);
 
+}
+
+//---------------------------------------------------------------
+// Logout function
+//---------------------------------------------------------------
+
+// Clear username from storage when clicking logout
+
+function showlogout(){
+  localStorage.clear();
+  alert(localStorage.getItem("userarray.username"));
+
+  var page = $("<div></div>");
+  page.append("<h1 class ='header1'>&nbsp;YOU HAVE BEEN LOGGED OUT SUCCESSFULLY</h1><hr><br>");
+
+  showForumTopics();
+
+  $("#maincontent").html(page);
 }
 
 function showLoginPage() {
@@ -189,7 +210,14 @@ loginBtn.on("click", function(){
     document.getElementById("username1").value = localStorage.username;
     }
 
+
 }
+
+
+
+
+
+
 
 //===============================================================
 //data base function============================================
@@ -354,7 +382,7 @@ function addTopic() {
   var topictitleLine = $("<p>Title:</p>");
   var topictitleBox = $("<input type= 'text' id = 'tittle'></input>");
   var topicpostLine = $("<p>Post:</p>");
-  var topicpostBox = $("<div id='toolbar'></div><div id='editor' input='text'></div>");
+   var topicpostBox = $("<div id='toolbar'></div><div id='editor' input='text'></div>");
 
 
   page.append(topictitleLine);
@@ -393,7 +421,6 @@ function addTopic() {
   });
 
   $("#maincontent").html(page);
-
   function submit(){
       var content = quill.getText();
       console.log(content);
@@ -427,11 +454,12 @@ function addTopic() {
            },
            theme:'snow'
            });
-
 }
 
 
 function showSingleTopic(topicDetails){
+
+
 
   if(topicDetails.title == "Melbourne Restaurant"){
       alert("Welcome" + " " + "to" + " " + topicDetails.title + " " + "Topics");
@@ -439,9 +467,15 @@ function showSingleTopic(topicDetails){
       var page = $("<div></div>");
 
       page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
+      page.append("<text>" + "&nbsp;What's New Today?&nbsp; User: " + userarray.username + "</text>");
+
+
       var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
+
+
       page.append(postBtn2);
+
 
   //============================================================================================
   //can not be used!!!!!!!!!!!!!!!! url:http://demos.jquerymobile.com/1.4.5/filterable/
@@ -474,13 +508,15 @@ function showSingleTopic(topicDetails){
                         if(localStorage.index == null)
                             localStorage.index = 0;
                         var a=0;
-                        for (var index = localStorage.index; index < forumtopics.length; index++){
+
+                        for
+                        (var index = localStorage.index; index < forumtopics.length; index++)
+                        {
                             var topic = forumtopics[index].title;
                             alert(topic);
                             a++;
                             page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
-
-                    }
+                        }
 
                     localStorage.index = index-a;
                 }
@@ -494,11 +530,20 @@ function showSingleTopic(topicDetails){
 
 
 
-
+   //-----------------------------------------
+  //  ADD POST - Register before Login
+ //-----------------------------------------
 
       postBtn2.on("click",function(){
-        addTopic();
-      });
+
+        if(userarray.username == null){
+
+                alert("Please Login first");
+              }
+        else{
+                addTopic();
+              }
+        });
 
       $("#maincontent").html(page);
 
@@ -515,7 +560,7 @@ function showSingleTopic(topicDetails){
       var page = $("<div></div>");
 
       page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
-
+      page.append("<text>" + "&nbsp;What's New Today?&nbsp; User: " + userarray.username + "</text>");
       var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
       page.append(postBtn2);
@@ -558,6 +603,7 @@ function showSingleTopic(topicDetails){
                                   a++;
                                   page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
 
+
                           }
 
                           localStorage.index = index-a;
@@ -571,12 +617,20 @@ function showSingleTopic(topicDetails){
                           });
 
 
+  //-----------------------------------------
+ //  ADD POST - Register before Login
+//-----------------------------------------
 
+     postBtn2.on("click",function(){
 
+       if(userarray.username == null){
 
-      postBtn2.on("click",function(){
-        addTopic();
-      });
+               alert("Please Login first");
+             }
+       else{
+               addTopic();
+             }
+       });
 
       $("#maincontent").html(page);
 
@@ -584,20 +638,20 @@ function showSingleTopic(topicDetails){
       document.getElementById("replybtn2").onclick=function(){addTopic();};
       document.getElementById("replybtn3").onclick=function(){addTopic();};
 
-  };
-
-
+   };
 
 if(topicDetails.title == "Travel"){
     alert("Welcome" + " " + "to" + " " + topicDetails.title + " " + "Topics");
 
     var page = $("<div></div>");
 
+    page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
+    page.append("<text>" + "&nbsp;What's New Today?&nbsp; User: " + userarray.username + "</text>");
     var postBtn2 = $("<button id='postBtn2' class='buttongroup'>New Post<img src ='img/plus.png' width='20px' height='20px'/></button>");
 
     page.append(postBtn2);
 
-    page.append("<h1 class='header5'> " +topicDetails.title+ " </h1><hr><br>");
+
 
 //============================================================================================
 //can not be used!!!!!!!!!!!!!!!! url:http://demos.jquerymobile.com/1.4.5/filterable/
@@ -641,6 +695,7 @@ if(topicDetails.title == "Travel"){
 
                         localStorage.index = index-a;
                     }
+
                         catch(e){
                             alert(e);}
                         })
@@ -651,24 +706,29 @@ if(topicDetails.title == "Travel"){
 
 
 
+//-----------------------------------------
+//  ADD POST - Register before Login
+//-----------------------------------------
 
+   postBtn2.on("click",function(){
 
-    postBtn2.on("click",function(){
-      addTopic();
-    });
+     if(userarray.username == null){
 
-    $("#maincontent").html(page);
+             alert("Please Login first");
+           }
+     else{
+             addTopic();
+           }
+     });
 
-    document.getElementById("replybtn1").onclick=function(){addTopic();};
-    document.getElementById("replybtn2").onclick=function(){addTopic();};
-    document.getElementById("replybtn3").onclick=function(){addTopic();};
+ $("#maincontent").html(page);
 
-};
-}
+  document.getElementById("replybtn1").onclick=function(){addTopic();};
+  document.getElementById("replybtn2").onclick=function(){addTopic();};
+  document.getElementById("replybtn3").onclick=function(){addTopic();};
 
-
-
-
+ };
+ }
 
 /*
 function showFacebook() {
@@ -692,6 +752,7 @@ $(document).ready(function(){
   $("#loginBtn").on("click", showLoginPage);
   $("#registerBtn").on("click", showRegistrationPage);
   $("#homeBtn").on("click", showForumTopics);
+  $("#logoutBtn").on("click", showlogout);
   // $("#postBtn").on("click", addTopic);
 
 
