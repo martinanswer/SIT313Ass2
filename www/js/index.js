@@ -99,7 +99,24 @@ function showForumTopics() {
       // Finally, add the page to our web app
     $("#maincontent").html(page);
 
+}
 
+//---------------------------------------------------------------
+// Logout function
+//---------------------------------------------------------------
+
+// Clear username from storage when clicking logout
+
+function showlogout(){
+  localStorage.clear();
+  alert(localStorage.getItem("userarray.username"));
+
+  var page = $("<div></div>");
+  page.append("<h1 class ='header1'>&nbsp;YOU HAVE BEEN LOGGED OUT SUCCESSFULLY</h1><hr><br>");
+
+  showForumTopics();
+
+  $("#maincontent").html(page);
 }
 
 function showLoginPage() {
@@ -553,7 +570,7 @@ function showSingleTopic(topicDetails){
                                   a++;
                                   page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
 
-                                  break;
+
                           }
 
                           localStorage.index = index-a;
@@ -702,6 +719,7 @@ $(document).ready(function(){
   $("#loginBtn").on("click", showLoginPage);
   $("#registerBtn").on("click", showRegistrationPage);
   $("#homeBtn").on("click", showForumTopics);
+  $("#logoutBtn").on("click", showlogout);
   // $("#postBtn").on("click", addTopic);
 
 
