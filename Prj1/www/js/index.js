@@ -354,7 +354,7 @@ function addTopic() {
   var topictitleLine = $("<p>Title:</p>");
   var topictitleBox = $("<input type= 'text' id = 'tittle'></input>");
   var topicpostLine = $("<p>Post:</p>");
-  var topicpostBox = $("<form id= 'acForm' ><textarea id = 'textarea'></textarea></form>");
+  var topicpostBox = $("<div id='toolbar'></div><div id='editor' input='text'></div>");
 
 
   page.append(topictitleLine);
@@ -393,6 +393,41 @@ function addTopic() {
   });
 
   $("#maincontent").html(page);
+
+  function submit(){
+      var content = quill.getText();
+      console.log(content);
+  }
+
+  var toolbarOptions = [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+['blockquote', 'code-block'],
+
+[{ 'header': 1 }, { 'header': 2 }],               // custom button values
+[{ 'list': 'ordered'}, { 'list': 'bullet' }],
+[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+[{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+[{ 'direction': 'rtl' }],                         // text direction
+
+[{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+[{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+[{ 'font': [] }],
+[{ 'align': [] }],
+
+['clean']                                         // remove formatting button
+]
+
+       //set the editor into div and set up theme
+
+           var quill = new Quill('#editor',{
+               modules:{
+               toolbar: toolbarOptions
+           },
+           theme:'snow'
+           });
+
 }
 
 
