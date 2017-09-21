@@ -395,12 +395,13 @@ function addTopic() {
   var postBtn = $("<button>post</button>");
   page.append(postBtn);
 
+
   postBtn.on("click", function(){
     posta = posta+1;
     topics[0].posts = posta;
     try{
       if (document.getElementById("tittle").value == "") throw "the tittle can not be empty"
-      if (document.getElementById("textarea").value == "") throw "the content can not be empty"
+      if (document.getElementById("editor").value == "") throw "the content can not be empty"
     }
 
     catch(err){
@@ -411,8 +412,8 @@ function addTopic() {
     if(p != 5){
     alert("We" + " " + "appreciate" + " " + "of" + " " + "your" + " " + "feedbacks");
     var title1 = document.getElementById("tittle").value;
-    var post1 = document.getElementById("textarea").value;
-    createForum(title1,post1);
+    var post1 = document.getElementById("editor").value;
+    submit(title1,post1);
     showForumTopics();
   }
 
@@ -421,9 +422,9 @@ function addTopic() {
   });
 
   $("#maincontent").html(page);
-  function submit(){
-      var content = quill.getText();
-      console.log(content);
+  function submit(title,content){
+       content = quill.getText();
+       createForum(title,content);
   }
 
   var toolbarOptions = [
@@ -513,7 +514,6 @@ function showSingleTopic(topicDetails){
                         (var index = localStorage.index; index < forumtopics.length; index++)
                         {
                             var topic = forumtopics[index].title;
-                            alert(topic);
                             a++;
                             page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
                         }
@@ -546,10 +546,6 @@ function showSingleTopic(topicDetails){
         });
 
       $("#maincontent").html(page);
-
-      document.getElementById("replybtn1").onclick=function(){addTopic();};
-      document.getElementById("replybtn2").onclick=function(){addTopic();};
-      document.getElementById("replybtn3").onclick=function(){addTopic();};
 
   };
 
