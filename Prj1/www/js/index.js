@@ -102,12 +102,14 @@ function showForumTopics() {
 }
 
 //---------------------------------------------------------------
-// Logout function
+// Logout function - Implemented
 //---------------------------------------------------------------
 
-// Clear username from storage when clicking logout
+//Clear username from storage when clicking logout and
+// Display no user in the home page - showForumTopics
 
 function showlogout(){
+      window.userarray = [];
   localStorage.clear();
   alert(localStorage.getItem("userarray.username"));
 
@@ -514,8 +516,9 @@ function showSingleTopic(topicDetails){
                         (var index = localStorage.index; index < forumtopics.length; index++)
                         {
                             var topic = forumtopics[index].title;
+                            var content = forumtopics[index].post;
                             a++;
-                            page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>On the Internet</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
+                            page.append("<ons-list-item><div class='left'><img class='list-item__thumbnail' src='img/tral.png'></div><div class='center'><span class='list-item__title'>" + topic + "</span><span class='list-item__subtitle'>" + content + "</span></div><div class='right'><ons-button modifier='quiet' id='replybtn3'>reply</ons-button></div></ons-list-item>")
                         }
 
                     localStorage.index = index-a;
