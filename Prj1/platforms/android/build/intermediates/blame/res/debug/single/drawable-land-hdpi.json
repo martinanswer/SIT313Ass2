@@ -1,10 +1,14 @@
 [
     {
-        "merged": "E:\\Users\\tkwok\\Prj1\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-land-hdpi\\screen.png",
-        "source": "E:\\Users\\tkwok\\Prj1\\platforms\\android\\res\\drawable-land-hdpi\\screen.png"
+        "merged": "E:\\Prj1\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-land-hdpi\\screen.png",
+        "source": "E:\\Prj1\\platforms\\android\\res\\drawable-land-hdpi\\screen.png"
     },
     {
         "merged": "E:\\sit313ass2\\10\\SIT313Ass2-martin\\Prj1\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-land-hdpi\\screen.png",
         "source": "E:\\sit313ass2\\10\\SIT313Ass2-martin\\Prj1\\platforms\\android\\res\\drawable-land-hdpi\\screen.png"
+    },
+    {
+        "merged": "E:\\Users\\tkwok\\Prj1\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-land-hdpi\\screen.png",
+        "source": "E:\\Users\\tkwok\\Prj1\\platforms\\android\\res\\drawable-land-hdpi\\screen.png"
     }
 ]

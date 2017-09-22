@@ -62,8 +62,6 @@
 .LoginPage, .RegistrationPage, .PostPage {
 
 width:250px;
-float:left;
-padding:25px;
 margin:20px 0 0 10px;
 border:1px #DFD0D2 dashed;
 position:relative;

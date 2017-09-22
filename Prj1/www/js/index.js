@@ -138,11 +138,10 @@ function showLoginPage() {
     var passwordBox = $("<input type= 'password' id = 'Password1'></input>");
 
 
-
-    page.append(usernameLine);
     usernameLine.append(usernameBox);
-    page.append(passwordLine);
+    page.append(usernameLine);
     passwordLine.append(passwordBox);
+    page.append(passwordLine);
 
 // Add the login button
 
